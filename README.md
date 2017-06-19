@@ -58,7 +58,7 @@ cd ~/projects
 git clone http://github.com/xxx/venus-ios.git
 # Input your credential username/password on github.
 ```
-Project location will be here `~/projects/venus/`
+Project location will be here `~/projects/Venus/`
 
 ## Build Dependencies
 
