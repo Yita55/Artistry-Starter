@@ -58,21 +58,23 @@ struct Artist {
           let bio = artistObject["bio"]  as? String,
           let imageName = artistObject["image"] as? String,
           let image = UIImage(named: imageName),
-          let worksObject = artistObject["works"] as? [[String : String]]{
-          var works = [Work]()
-          for workObject in worksObject {
-            if let workTitle = workObject["title"],
-              let workImageName = workObject["image"],
-              let workImage = UIImage(named: workImageName + ".jpg"),
-              let info = workObject["info"] {
-              works.append(Work(title: workTitle,image: workImage,info: info, isExpanded: false))
-            }
-          }
+          let worksObject = artistObject["works"] as? [[String : String]] {
           
-          let artist = Artist(name: name, bio: bio, image: image, works: works)
-          artists.append(artist)
+              var works = [Work]()
+              for workObject in worksObject {
+              if let workTitle = workObject["title"],
+                 let workImageName = workObject["image"],
+                 let workImage = UIImage(named: workImageName + ".jpg"),
+                 let info = workObject["info"] {
+                     works.append(Work(title: workTitle,image: workImage,info: info, isExpanded: false))
+                 }
+              }
+          
+              let artist = Artist(name: name, bio: bio, image: image, works: works)
+              artists.append(artist)
         }
-      }
+        
+       }
     } catch {
       return artists
     }
